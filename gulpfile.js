@@ -15,6 +15,7 @@ var pug = require('gulp-pug');
 var imageMin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var notify = require('gulp-notify');
+var babel = require('gulp-babel');
 
 var paths = {
 	src : {
@@ -58,6 +59,9 @@ gulp.task('js',function(){
             suffix: '.min'
         }))*/
         //.pipe(uglify())
+        // .pipe(babel({
+        //     presets: ['env']
+        // }))
         .pipe(gulp.dest(paths.dest.scripts))
         .pipe(browserSync.stream())
           .pipe(notify('js task finished'))
