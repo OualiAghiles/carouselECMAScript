@@ -1,1 +1,1 @@
-carouselECMAScript
+carouselES6
