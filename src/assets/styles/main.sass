@@ -1,3 +1,37 @@
 @import 'bulma'
 .carousel
   overflow: hidden
+.slider
+  overflow: hidden
+.slider__container
+  transform: translate3d(0,0,0)
+  transition: transform 0.5s ease
+  &::after
+    content: ""
+    clear: both
+    display: table
+
+.slider__item
+  float: left
+  .card
+    margin: 5px
+.slider__next, .slider__prev
+  width: 40px
+  height: 40px
+  position: absolute
+  top: 50%
+  right: 0
+  background-color: #fff
+  background-image: url(../images/chevron_right.svg)
+  background-size: 30px 30px
+  background-repeat: no-repeat
+  background-position: center center
+  transform: translateY(-50%)
+  cursor: pointer
+.slider__prev
+  background-image: url(../images/chevron_left.svg)
+  left: 0
+  right: auto
+.slider__next--hidden,
+.slider__prev--hidden
+  opacity: 0
