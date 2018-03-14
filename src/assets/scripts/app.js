@@ -117,7 +117,7 @@ document.addEventListener('readystatechange', function () {
   new slider(document.querySelector('#slider'), {
     slidesToScroll: 2,
     slidesVisible: 2,
-    loop: true
+    loop: false
   })
 
 })
