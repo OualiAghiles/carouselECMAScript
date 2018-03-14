@@ -4,9 +4,6 @@ class slider {
    * @callback moveCallBack
    * @param {number} index
    */
-  
-  
-  
   /**
    * @param {HTMLelement} element
    * @param {object} options
@@ -36,10 +33,8 @@ class slider {
     })
     this.setStyle()
     this.createNavigation()
-    this.onMove(0)
-
+    this.moveCallbacks.forEach(cd => cd(0))
   }
-
   /**
    * setStyle - applique les bonne dimmention au elements du carousel
    *
@@ -51,9 +46,7 @@ class slider {
     this.items.forEach(item =>{
       item.style.width = ((100 / this.options.slidesVisible) / ratio ) + '%'
     })
-
   }
-
   createNavigation () {
     let nextButton = this.createDivWithClass('slider__next')
     let prevButton = this.createDivWithClass('slider__prev')
@@ -61,12 +54,12 @@ class slider {
     this.root.appendChild(prevButton)
     nextButton.addEventListener('click', this.next.bind(this))
     prevButton.addEventListener('click', this.prev.bind(this))
+    if (this.options.loop === true) {
+      return
+    }
     this.onMove(index => {
-      console.log(index);
-      
       if (index === 0) {
         prevButton.classList.add('slider__prev--hidden')
-        console.log('hidePrev')
       } else {
         prevButton.classList.remove('slider__prev--hidden')
       }
@@ -76,17 +69,13 @@ class slider {
         nextButton.classList.remove('slider__next--hidden')
       }
     })
-
   }
   next () {
     this.goToItem(this.currentItem + this.options.slidesToScroll)
-    console.log(this.currentItem);
   }
   prev () {
     this.goToItem(this.currentItem - this.options.slidesToScroll)
-    console.log('left');
   }
-
   /**
    * goToItem - deplace le slider ver l'element cible
    *
@@ -96,13 +85,13 @@ class slider {
   goToItem (index) {
     if (index < 0) {
       index = this.items.length - this.options.slidesVisible
-    } else if (index >= this.items.length  || this.items[this.currentItem + this.options.slidesVisible] === undefined) {
+    } else if (index >= this.items.length  || (this.items[this.currentItem + this.options.slidesVisible] === undefined && index > this.currentItem)) {
       index = 0
     }
+    this.currentItem = index
     let translateX = index * (-100 / this.items.length)
     this.container.style.transform = 'translate3d('+ translateX +'%, 0 , 0)'
-    this.currentItem = index
-    this.onMove(index)
+    this.moveCallbacks.forEach(cd => cd(index))
   }
   /**
    *
@@ -116,7 +105,7 @@ class slider {
     return div
   }
   /**
-   * 
+   *
    * @param {moveCallBack} cb
    */
   onMove (cb) {
@@ -126,8 +115,9 @@ class slider {
 
 document.addEventListener('readystatechange', function () {
   new slider(document.querySelector('#slider'), {
-    slidesToScroll: 1,
-    slidesVisible: 3,
-    loop: false
+    slidesToScroll: 2,
+    slidesVisible: 2,
+    loop: true
   })
+
 })
