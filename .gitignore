@@ -128,7 +128,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# next.js build output
+.next
+.idea
+dist
 
-
-# End of https://www.gitignore.io/api/code,node,jetbrains+all
-dist/
+*.lock
