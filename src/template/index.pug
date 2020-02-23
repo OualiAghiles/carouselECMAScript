@@ -6,7 +6,7 @@ html(lang='en')
 		meta(name="viewport", content="width=device-width, initial-scale=1")
 		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
 		link(rel="stylesheet", href="assets/styles/main.css")
-		script(async, src="assets/scripts/app.js")
+		script(src="assets/scripts/app.js", async , defer)
 	body
 		section.hero
 			.container
@@ -17,4 +17,7 @@ html(lang='en')
 		
 		section
 			#slider.container
+				include slider
+			hr
+			#slider2.container
 				include slider
