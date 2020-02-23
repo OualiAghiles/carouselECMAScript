@@ -245,8 +245,8 @@ document.addEventListener('readystatechange', () => {
   new slider(document.querySelector('#slider'), {
     slidesVisible: 2,
     slidesToScroll: 2,
-    loop: true,
-    infinite: false,
+    loop: false,
+    infinite: true,
     pagination: true
   })
   new slider(document.querySelector('#slider2'), {
