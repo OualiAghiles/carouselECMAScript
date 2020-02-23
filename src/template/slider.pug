@@ -1,0 +1,48 @@
+mixin slide(slides)
+  each slide in slides
+    .project.columns  
+      .column
+        .media
+          .media-content
+            p.title.is-4= slide.name
+        .content
+          |#{slide.content}
+          br
+          button.button.is-danger.is-outlined Voir plus
+      .column
+        figure.image.is-4by3
+          img(src=slide.img, alt='Placeholder image', height="400")
+
++slide([
+  {
+    name: 'Tendfox',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=0'
+  },
+  {
+    name: 'SIAO',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=1'
+  },
+  {
+    name: 'WinNdawi',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=2'
+  },
+  {
+    name: 'DZPremium',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=3'
+  },
+  {
+    name: 'ESOP',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=4'
+  },
+  {
+    name: 'ScoreCup',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=5'
+  }
+])
+
