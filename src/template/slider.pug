@@ -1,61 +1,49 @@
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/nemo/627/300/2', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/rio/627/300/3', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/nemo/627/300/4', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/nemo/627/300/5', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/futurama/627/300/6', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-.card
-  .card-image
-    figure.image.is-4by3
-      img(src='http://lorempicsum.com/up/627/300/6', alt='Placeholder image', height="400")
-  .card-content
-    .media
-      .media-content
-        p.title.is-4 John Smith
-    .content
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+mixin slide(slides)
+  each slide in slides
+    .project.columns  
+      .column
+        .media
+          .media-content
+            p.title.is-4= slide.name
+        .content
+          |#{slide.content}
+          br
+          button.button.is-danger.is-outlined Voir plus
+      .column
+        figure.image.is-4by3
+          img(src=slide.img, alt='Placeholder image', height="400")
+
++slide([
+  {
+    name: 'Tendfox',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=0'
+  },
+  {
+    name: 'SIAO',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=1'
+  },
+  {
+    name: 'WinNdawi',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=2'
+  },
+  {
+    name: 'DZPremium',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=3'
+  },
+  {
+    name: 'ESOP',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=4'
+  },
+  {
+    name: 'ScoreCup',
+    content: 'Quisquam tempore quis laboriosam corporis praesentium facere. Dolores, quas non ut iste sit quidem nobis ex velit!',
+    img: 'http://picsum.photos/627/300?random=5'
+  }
+])
+
