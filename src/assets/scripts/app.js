@@ -1,8 +1,5 @@
 class slider {
   /**
-<<<<<<< HEAD
-
-=======
    * This callback is displayed as part of the Requester class.
    * @callback moveCallBack
    * @param {number} index
@@ -16,17 +13,11 @@ class slider {
    * @param {boolean} [options.pagination = false] *** doit afficher la pagination  *** 
    * @param {boolean} [options.navigation = true] *** doit afficher la navigation  *** 
    * @param {boolean} [options.infinite = false] *** doit on bouclé en a l'infini  ***
->>>>>>> origin/master
    */
-  constructor (element, options = {}) {
+  constructor(element, options = {}) {
     this.element = element
     this.options = Object.assign({}, {
-      slidesToScroll : 1,
-<<<<<<< HEAD
-
-    }, options)
-
-=======
+      slidesToScroll: 1,
       slidesVisible: 1,
       loop: false,
       pagination: false,
@@ -52,17 +43,17 @@ class slider {
       item.appendChild(child)
       return item
     })
-    if(this.options.infinite) {
-      this.offset = this.options.slidesVisible + this.options.slidesToScroll 
-      if(this.offset > children.length){
-        console.error("il n' y a pas assez d'elements dans le carousel ",  this.element);
+    if (this.options.infinite) {
+      this.offset = this.options.slidesVisible + this.options.slidesToScroll
+      if (this.offset > children.length) {
+        console.error("il n' y a pas assez d'elements dans le carousel ", this.element);
       }
       this.items = [
         ...this.items.slice(this.items.length - this.offset).map(el => el.cloneNode(true)),
         ...this.items,
         ...this.items.slice(0, this.offset).map(el => el.cloneNode(true))
       ]
-        
+
       this.goToItem(this.offset, false)
 
     }
@@ -83,7 +74,7 @@ class slider {
         this.prev()
       }
     })
-    if(this.options.infinite){
+    if (this.options.infinite) {
       this.container.addEventListener('transitionend', this.resetInfinite.bind(this))
     }
   }
@@ -92,68 +83,18 @@ class slider {
    *
    * @return {HTMLelement}  width of elements
    */
-  setStyle () {
+  setStyle() {
     let ratio = this.items.length / this.slidesVisible
     this.container.style.width = (ratio * 100) + "%"
-    this.items.forEach(item =>{
-      item.style.width = ((100 / this.slidesVisible) / ratio ) + '%'
->>>>>>> origin/master
+    this.items.forEach(item => {
+      item.style.width = ((100 / this.slidesVisible) / ratio) + '%'
     })
-    this.setStyle()
-    this.createNavigation()
-    this.moveCallbacks.forEach(cd => cd(0))
   }
   /**
-<<<<<<< HEAD
-   * setStyle - applique les bonne dimmention au elements du carousel
-   *
-   * @return {HTMLelement}  width of elements
-   */
-  setStyle () {
-    let ratio = this.items.length / this.options.slidesVisible
-    this.container.style.width = (ratio * 100) + "%"
-    this.items.forEach(item =>{
-      item.style.width = ((100 / this.options.slidesVisible) / ratio ) + '%'
-    })
-  }
-  createNavigation () {
-    let nextButton = this.createDivWithClass('slider__next')
-    let prevButton = this.createDivWithClass('slider__prev')
-    this.root.appendChild(nextButton)
-    this.root.appendChild(prevButton)
-    nextButton.addEventListener('click', this.next.bind(this))
-    prevButton.addEventListener('click', this.prev.bind(this))
-    if (this.options.loop === true) {
-      return
-    }
-    this.onMove(index => {
-      if (index === 0) {
-        prevButton.classList.add('slider__prev--hidden')
-      } else {
-        prevButton.classList.remove('slider__prev--hidden')
-      }
-      if (this.items[this.currentItem + this.options.slidesVisible] === undefined) {
-        nextButton.classList.add('slider__next--hidden')
-      } else {
-        nextButton.classList.remove('slider__next--hidden')
-      }
-    })
-  }
-  next () {
-    this.goToItem(this.currentItem + this.options.slidesToScroll)
-  }
-  prev () {
-    this.goToItem(this.currentItem - this.options.slidesToScroll)
-  }
-  /**
-
-   *
-
-=======
    * create navigation and eventlisteners for the slider
    * @returns {HTMLElement} navigation slider
    */
-  createNavigation () {
+  createNavigation() {
     let nextButton = this.createDivWithClass('slider__next')
     let prevButton = this.createDivWithClass('slider__prev')
     this.root.appendChild(nextButton)
@@ -184,7 +125,7 @@ class slider {
     let pagination = this.createDivWithClass('slider__pagination')
     let buttons = []
     this.root.appendChild(pagination)
-    for (let i = 0; i < (this.items.length - (2 * this.offset)); i= i + this.options.slidesToScroll) {
+    for (let i = 0; i < (this.items.length - (2 * this.offset)); i = i + this.options.slidesToScroll) {
       let button = this.createDivWithClass('slides__pagination--button')
       button.addEventListener('click', () => this.goToItem(i + this.offset))
       pagination.appendChild(button)
@@ -200,10 +141,10 @@ class slider {
     })
 
   }
-  next () {
+  next() {
     this.goToItem(this.currentItem + this.slidesToScroll)
   }
-  prev () {
+  prev() {
     this.goToItem(this.currentItem - this.slidesToScroll)
   }
   /**
@@ -213,15 +154,15 @@ class slider {
    * @param {Boolean} [animation = true] active les animations css
    * @return {Number}       target index
    */
-  goToItem (index, animation = true) {
+  goToItem(index, animation = true) {
     if (index < 0) {
-      if(this.options.loop){
+      if (this.options.loop) {
 
         index = this.items.length - this.slidesVisible
-      }else {
+      } else {
         return
       }
-    } else if (index >= this.items.length  || (this.items[this.currentItem + this.slidesVisible] === undefined && index > this.currentItem)) {
+    } else if (index >= this.items.length || (this.items[this.currentItem + this.slidesVisible] === undefined && index > this.currentItem)) {
       if (this.options.loop) {
 
         index = 0
@@ -234,7 +175,7 @@ class slider {
       this.container.style.transition = 'none'
     }
     let translateX = index * (-100 / this.items.length)
-    this.container.style.transform = 'translate3d('+ translateX +'%, 0 , 0)'
+    this.container.style.transform = 'translate3d(' + translateX + '%, 0 , 0)'
     this.container.offsetWidth // force repaint dom
     if (animation === false) {
       this.container.style.transition = ''
@@ -244,36 +185,25 @@ class slider {
   /**
    *
    * @param {string} className
->>>>>>> origin/master
    * @memberof carousel
    * @returns {HTMLelement}
    */
-  createDivWithClass (className) {
+  createDivWithClass(className) {
     let div = document.createElement('div')
     div.classList.add(className)
     return div
   }
-<<<<<<< HEAD
-
-}
-
-
-  new slider(document.querySelector('#slider'), {
-
-  })
-
-=======
   /**
    *
    * @param {moveCallBack} cb
    */
-  onMove (cb) {
+  onMove(cb) {
     this.moveCallbacks.push(cb)
   }
 
   onWindowResize() {
     let mobile = window.innerWidth < 800
-    if(mobile !== this.isMobile) {
+    if (mobile !== this.isMobile) {
       this.isMobile = mobile
       this.setStyle()
       this.moveCallbacks.forEach(cd => cd(this.currentItem))
@@ -285,25 +215,25 @@ class slider {
    */
 
   resetInfinite() {
-    if(this.currentItem <= this.options.slidesToScroll) {
+    if (this.currentItem <= this.options.slidesToScroll) {
       this.goToItem(this.currentItem + this.items.length - (2 * this.offset), false)
     }
     if (this.currentItem >= this.items.length - this.offset) {
-      this.goToItem(this.currentItem - (this.items.length - ( 2 * this.offset)), false)
+      this.goToItem(this.currentItem - (this.items.length - (2 * this.offset)), false)
     }
   }
 
   /** 
    * @returns {number} Nombre de silde a slider
    */
-  
+
   get slidesToScroll() {
     return this.isMobile ? 1 : this.options.slidesToScroll
   }
 
   /** 
    * @returns {number} Nombre de silde visibel
-   */ 
+   */
   get slidesVisible() {
     return this.isMobile ? 1 : this.options.slidesVisible
   }
@@ -313,10 +243,10 @@ class slider {
 
 document.addEventListener('readystatechange', () => {
   new slider(document.querySelector('#slider'), {
-    slidesVisible: 3,
-    slidesToScroll: 1,
+    slidesVisible: 2,
+    slidesToScroll: 2,
     loop: true,
-    infinite: true,
+    infinite: false,
     pagination: true
   })
   new slider(document.querySelector('#slider2'), {
@@ -326,5 +256,4 @@ document.addEventListener('readystatechange', () => {
     pagination: true
   })
 
-} )
->>>>>>> origin/master
+})
