@@ -1,19 +1,19 @@
-# Carousel / Slider  responcive
+# Carousel / Slider  responsive
 
 > This plugin made with 
-    * Vanilla JavaScript
-    - Css Framwork Bulma (not important)
-    - Sass Preprocessor
-    - Pug template engine
-    - Gulp as task runner
+>    * Vanilla JavaScript
+>    * Css Framwork Bulma (not important)
+>    * Sass Preprocessor
+>    * Pug template engine
+>    * Gulp as task runner
 ---
 
 ###  Required
 * nodejs
 
 >
-visite [Nodejs](http://nodejs.org/) site to install
-
+>    visite [Nodejs](http://nodejs.org/) site to install
+>
 
 * Gulp in global
 
@@ -52,22 +52,22 @@ $ gulp build
 Structure on source file
 ------
 
-```
--src
-    - assets
-        - images
-            - chevron_left.svg
-            - chevron_right.svg
-        - styles
-            - bulma.sass
-            - main.sass
-            - slider.sass
-        - scripts
-            - slider.js
-            - touchMobile.js
-    - template
-```
----
+>* src
+>    - assets
+>        1. images
+>            - chevron_left.svg
+>            - chevron_right.svg
+>        2. styles
+>            - bulma.sass
+>            - main.sass
+>            - slider.sass (***minimum style to make the slider work correctly***)
+>        3. scripts
+>            - slider.js
+>            - touchMobile.js
+>    - template
+>       - index.pug    
+>       - slider.pug
+
 How to user
 ------
 
@@ -188,6 +188,7 @@ Default options are :
       infinite: false
 }
 ```
+
 <dl>
     <dt>SlidesToScroll</dt>
     <dd>Nbr of slides to scroll.</dd>
