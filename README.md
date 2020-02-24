@@ -25,7 +25,10 @@ $ npm install gulp-cli -g
 
 ### Installation
 
+
 ```
+$ cd 'to the folder cloned' 
+
 $ npm i 
 or
 $ yarn
