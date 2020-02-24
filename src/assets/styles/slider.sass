@@ -1,0 +1,67 @@
+.slider
+  overflow: hidden
+  .slider__container
+    transform: translate3d(0,0,0)
+    transition: transform 0.5s ease
+    &::after
+      content: ""
+      clear: both
+      display: table
+
+.slider__item
+  float: left
+  .project
+    padding: 0 10px
+.slider__next, .slider__prev
+  width: 40px
+  height: 40px
+  position: absolute
+  top: 50%
+  right: 0
+  background-color: #fff
+
+  background-image: url(../img/chevron_right.svg)
+  background-size: 30px 30px
+  background-repeat: no-repeat
+  background-position: center center
+  transform: translateY(-50%)
+  cursor: pointer
+.slider__prev
+  background-image: url(../img/chevron_left.svg)
+  left: 0
+  right: auto
+.slider__next--hidden,
+.slider__prev--hidden
+  opacity: 0
+  visibility: hidden
+.slider__pagination
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  bottom: -20px
+  display: none
+  &::after
+    content: ''
+    display: table
+    clear: both
+  .slides__pagination--button
+    width: 15px
+    height: 15px
+    display: block
+    float: left
+    margin: 0 5px
+    content: ''
+    background: white
+    border: 1px solid rgba(0,0,0,0.3)
+    border-radius: 50%;
+    cursor: pointer
+    transition: transform 0.25s ease-in-out, background 0.25s ease-in-out
+    box-shadow: 0 2px 5px #3232321a
+    &.active,
+    &:hover
+      transform: scale(1.2)
+      background: #3232321a
+@media screen and ( min-width: '800px')
+  .slider__pagination
+    display: block
+

@@ -59,8 +59,6 @@ export default class SliderTouchMobile {
   drag(e) {
     
     if (this.origin) {
-      console.log('drag');
-      console.log(e);
       let point = e.touches ? e.touches[0] : e
       let translate = {x: point.screenX - this.origin.x, y: point.screenY - this.origin.y}
       if (e.touches && Math.abs(translate.x) > Math.abs(translate.y)) {
@@ -70,7 +68,6 @@ export default class SliderTouchMobile {
       let baseTranslate = this.slider.currentItem * - 100 / this.slider.items.length
       this.lastTranslate = translate
       this.slider.translate(baseTranslate + (100 * translate.x / this.width))
-      console.log(translate);
     }
   }
 

@@ -14,7 +14,6 @@ import del from 'del';
 import sourcemaps from 'gulp-sourcemaps'
 import purgecss from 'gulp-purgecss';
 const atImport = require("postcss-import");
-//const tailwindcss = require('tailwindcss')
 
 
 const server = browserSync.create();
@@ -67,19 +66,8 @@ export function styles() {
     return gulp.src(paths.styles.src)
         .pipe(sourcemaps.init())
         .pipe(sass())
-        //.pipe(postcss(plugins))
         .pipe(sourcemaps.write('./maps'))
-        /*.pipe(
-          purgecss({
-            content: [paths.views.src],
-            extractors: [
-              {
-                extractor: TailwindExtractor,
-                extensions: ["pug"]
-              }
-            ]
-          })
-        )*/
+
         .pipe(gulp.dest(paths.styles.dest))
         .pipe(cleanCSS())
         // pass in options to the stream
