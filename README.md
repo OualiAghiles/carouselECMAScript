@@ -74,10 +74,10 @@ Structure on source file
 How to user
 ------
 
-### add link to the files
-add the slider plugin js to the html file
+### Add link to the files
+Add the slider plugin js to the html file
 
-add the slider plugin css to the html file
+Add the slider plugin css to the html file
 
 ```html
 <!DOCTYPE html>
@@ -99,9 +99,8 @@ add the slider plugin css to the html file
 
 ```
 ---
-### add link to the files
-
-minimal html structure
+### Add link to the files
+Minimal html structure
 
 ```HTML
 <section>
@@ -146,7 +145,7 @@ minimal html structure
 
 ### Init the plugin
 
-add script tag on html and call the class
+Add script tag on html and call the class
 
 ```HTML
 <!DOCTYPE html>
@@ -183,15 +182,15 @@ add script tag on html and call the class
 Default options are :
 ```JSON
 {
-      slidesToScroll: 1,
-      slidesVisible: 1,
-      loop: false,
-      pagination: false,
-      navigation: true,
-      infinite: false
+      "slidesToScroll": 1,
+      "slidesVisible": 1,
+      "loop": false,
+      "pagination": false,
+      "navigation": true,
+      "infinite": false
 }
 ```
-
+### Options definitions
 <dl>
     <dt>SlidesToScroll</dt>
     <dd>Nbr of slides to scroll.</dd>
