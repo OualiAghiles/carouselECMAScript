@@ -1,4 +1,6 @@
-class slider {
+import SliderTouchMobile from './touchMobile.js'
+
+class Slider {
   /**
    * This callback is displayed as part of the Requester class.
    * @callback moveCallBack
@@ -77,6 +79,8 @@ class slider {
     if (this.options.infinite) {
       this.container.addEventListener('transitionend', this.resetInfinite.bind(this))
     }
+    // Plugins
+    new SliderTouchMobile(this)
   }
   /**
    * setStyle - applique les bonne dimmention au elements du carousel
@@ -147,6 +151,10 @@ class slider {
   prev() {
     this.goToItem(this.currentItem - this.slidesToScroll)
   }
+  translate(pucentage) {
+    this.container.style.transform = 'translate3d(' + pucentage + '%, 0 , 0)'
+
+  }
   /**
    * goToItem - deplace le slider ver l'element cible
    *
@@ -172,13 +180,12 @@ class slider {
     }
     this.currentItem = index
     if (animation === false) {
-      this.container.style.transition = 'none'
-    }
+      this.disableTransition()    }
     let translateX = index * (-100 / this.items.length)
-    this.container.style.transform = 'translate3d(' + translateX + '%, 0 , 0)'
+    this.translate(translateX)
     this.container.offsetWidth // force repaint dom
     if (animation === false) {
-      this.container.style.transition = ''
+      this.enableTransition()
     }
     this.moveCallbacks.forEach(cd => cd(index))
   }
@@ -209,7 +216,20 @@ class slider {
       this.moveCallbacks.forEach(cd => cd(this.currentItem))
     }
   }
-
+  
+  /*
+   * Disable transitions
+   */
+  disableTransition() {
+    this.container.style.transition = 'none'
+  }
+  
+  /** 
+   * Enable transitions
+  */
+  enableTransition() {
+    this.container.style.transition = ''
+  }
   /**
    * Deplace "container" pour donner l'impression d'un slide infini
    */
@@ -237,19 +257,32 @@ class slider {
   get slidesVisible() {
     return this.isMobile ? 1 : this.options.slidesVisible
   }
+  /**
+   * @returns {Number} largeur du container
+  */
+  get containerWidth() {
+    return this.container.offsetWidth
+  }
+  
+  /**
+   * @returns {Number} largeur du root
+  */
+  get sliderWidth() {
+    return this.root.offsetWidth
+  }
 }
 
 
 
 document.addEventListener('readystatechange', () => {
-  new slider(document.querySelector('#slider'), {
+  new Slider(document.querySelector('#slider'), {
     slidesVisible: 2,
     slidesToScroll: 2,
     loop: false,
     infinite: true,
     pagination: true
   })
-  new slider(document.querySelector('#slider2'), {
+  new Slider(document.querySelector('#slider2'), {
     slidesToScroll: 1,
     slidesVisible: 1,
     loop: true,

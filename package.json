@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
-    "animate-sass": "^0.8.2"
+    "animate-sass": "^0.8.2",
+    "standard": "^14.3.1"
   }
 }
