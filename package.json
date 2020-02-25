@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs": "node_modules/.bin/jsdoc -c conf.json"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "@babel/register": "^7.8.3",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
+    "docdash": "^1.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
@@ -30,11 +31,12 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "imagemin": "^7.0.1",
-    "postcss-import": "^12.0.1"
+    "jsdoc": "^3.6.3",
+    "postcss-import": "^12.0.1",
+    "@babel/runtime": "^7.8.4",
+    "standard": "^14.3.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
-    "animate-sass": "^0.8.2",
-    "standard": "^14.3.1"
+    "tailwindcss": "^1.1.4"
   }
 }

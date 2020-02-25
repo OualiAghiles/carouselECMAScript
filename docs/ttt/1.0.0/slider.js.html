@@ -1,4 +1,50 @@
-import SliderTouchMobile from './touchMobile.js'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>slider.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Slider.html">Slider</a><ul class='methods'><li data-type='method'><a href="Slider.html#createNavigation">createNavigation</a></li><li data-type='method'><a href="Slider.html#createPagination">createPagination</a></li><li data-type='method'><a href="Slider.html#disableTransition">disableTransition</a></li><li data-type='method'><a href="Slider.html#enableTransition">enableTransition</a></li><li data-type='method'><a href="Slider.html#goToItem">goToItem</a></li><li data-type='method'><a href="Slider.html#next">next</a></li><li data-type='method'><a href="Slider.html#onMove">onMove</a></li><li data-type='method'><a href="Slider.html#onWindowResize">onWindowResize</a></li><li data-type='method'><a href="Slider.html#prev">prev</a></li><li data-type='method'><a href="Slider.html#resetInfinite">resetInfinite</a></li><li data-type='method'><a href="Slider.html#setStyle">setStyle</a></li><li data-type='method'><a href="Slider.html#translate">translate</a></li></ul></li><li><a href="SliderTouchMobile.html">SliderTouchMobile</a><ul class='methods'><li data-type='method'><a href="SliderTouchMobile.html#.drag">drag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.endDrag">endDrag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.startDrag">startDrag</a></li></ul></li><li><a href="SliderTouchMobile.module.exports.html">module.exports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">slider.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import SliderTouchMobile from './touchMobile.js'
 /**
  * caroussel responsive avec possibilité d'afficher un ou plusieurs element par slide
  * incluant la pagination rotation en boucle et le tactile
@@ -36,7 +82,7 @@ class Slider {
       navigation: true,
       infinite: false
     }, options)
-    if (this.options.infinite && this.options.loop) {
+    if (this.options.infinite &amp;&amp; this.options.loop) {
       throw new Error("l'option loop n'est pas compatible avec l'option infinite")
     }
     const children = Array.from(element.children)
@@ -141,7 +187,7 @@ class Slider {
     const pagination = this.createDivWithClass('slider__pagination')
     const buttons = []
     this.root.appendChild(pagination)
-    for (let i = 0; i < (this.items.length - (2 * this.offset)); i = i + this.options.slidesToScroll) {
+    for (let i = 0; i &lt; (this.items.length - (2 * this.offset)); i = i + this.options.slidesToScroll) {
       const button = this.createDivWithClass('slides__pagination--button')
       button.addEventListener('click', () => this.goToItem(i + this.offset))
       pagination.appendChild(button)
@@ -188,13 +234,13 @@ class Slider {
    * @return {Number}       target index
    */
   goToItem (index, animation = true) {
-    if (index < 0) {
+    if (index &lt; 0) {
       if (this.options.loop) {
         index = this.items.length - this.slidesVisible
       } else {
         return
       }
-    } else if (index >= this.items.length || (this.items[this.currentItem + this.slidesVisible] === undefined && index > this.currentItem)) {
+    } else if (index >= this.items.length || (this.items[this.currentItem + this.slidesVisible] === undefined &amp;&amp; index > this.currentItem)) {
       if (this.options.loop) {
         index = 0
       } else {
@@ -237,7 +283,7 @@ class Slider {
    * changer le nombre d'element afficher par slide
    */
   onWindowResize () {
-    const mobile = window.innerWidth < 800
+    const mobile = window.innerWidth &lt; 800
     if (mobile !== this.isMobile) {
       this.isMobile = mobile
       this.setStyle()
@@ -263,7 +309,7 @@ class Slider {
    * Deplace "container" pour donner l'impression d'un slide infini
    */
   resetInfinite () {
-    if (this.currentItem <= this.options.slidesToScroll) {
+    if (this.currentItem &lt;= this.options.slidesToScroll) {
       this.goToItem(this.currentItem + this.items.length - (2 * this.offset), false)
     }
     if (this.currentItem >= this.items.length - this.offset) {
@@ -320,3 +366,30 @@ document.addEventListener('readystatechange', () => {
   })
   s2()
 })
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Feb 25 2020 18:06:51 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
