@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Slider.html">Slider</a><ul class='methods'><li data-type='method'><a href="Slider.html#createNavigation">createNavigation</a></li><li data-type='method'><a href="Slider.html#createPagination">createPagination</a></li><li data-type='method'><a href="Slider.html#disableTransition">disableTransition</a></li><li data-type='method'><a href="Slider.html#enableTransition">enableTransition</a></li><li data-type='method'><a href="Slider.html#goToItem">goToItem</a></li><li data-type='method'><a href="Slider.html#next">next</a></li><li data-type='method'><a href="Slider.html#onMove">onMove</a></li><li data-type='method'><a href="Slider.html#onWindowResize">onWindowResize</a></li><li data-type='method'><a href="Slider.html#prev">prev</a></li><li data-type='method'><a href="Slider.html#resetInfinite">resetInfinite</a></li><li data-type='method'><a href="Slider.html#setStyle">setStyle</a></li><li data-type='method'><a href="Slider.html#translate">translate</a></li></ul></li><li><a href="SliderTouchMobile.html">SliderTouchMobile</a><ul class='methods'><li data-type='method'><a href="SliderTouchMobile.html#.drag">drag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.endDrag">endDrag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.startDrag">startDrag</a></li></ul></li><li><a href="SliderTouchMobile.module.exports.html">module.exports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3>slider-carousel 1.0.0</h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>Carousel / Slider  responsive</h1>
+<blockquote>
+<p>This plugin made with</p>
+<ul>
+<li>Vanilla JavaScript</li>
+<li>Css Framwork Bulma (not important)</li>
+<li>Sass Preprocessor</li>
+<li>Pug template engine</li>
+<li>Gulp as task runner</li>
+</ul>
+</blockquote>
+<hr>
+<h3>Required</h3>
+<ul>
+<li>nodejs</li>
+</ul>
+<blockquote>
+<p>visite <a href="http://nodejs.org/">Nodejs</a> site to install</p>
+</blockquote>
+<ul>
+<li>Gulp in global</li>
+</ul>
+<pre class="prettyprint source"><code>$ npm install gulp-cli -g
+
+</code></pre>
+<h3>Installation</h3>
+<pre class="prettyprint source"><code>$ cd 'to the folder cloned' 
+
+$ npm i 
+or
+$ yarn
+
+</code></pre>
+<h3>Developpement Serve</h3>
+<pre class="prettyprint source"><code>$ gulp
+
+</code></pre>
+<h3>Serve the Fully Built &amp; Optimized Site</h3>
+<pre class="prettyprint source"><code>$ gulp build
+
+</code></pre>
+<hr>
+<h2>Structure on source file</h2>
+<blockquote>
+<ul>
+<li>src
+<ul>
+<li>assets
+<ol>
+<li>images
+<ul>
+<li>chevron_left.svg</li>
+<li>chevron_right.svg</li>
+</ul>
+</li>
+<li>styles
+<ul>
+<li>bulma.sass</li>
+<li>main.sass</li>
+<li>slider.sass (<em><strong>minimum style to make the slider work correctly</strong></em>)</li>
+</ul>
+</li>
+<li>scripts
+<ul>
+<li>slider.js</li>
+<li>touchMobile.js</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>template
+<ul>
+<li>index.pug</li>
+<li>slider.pug</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2>How to user</h2>
+<h3>Add link to the files</h3>
+<p>Add the slider plugin js to the html file</p>
+<p>Add the slider plugin css to the html file</p>
+<pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
+&lt;html lang=&quot;en&quot;>
+&lt;head>
+    &lt;meta charset=&quot;UTF-8&quot;>
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    &lt;title>Document&lt;/title>
+    &lt;!-- styles of the slider -->
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/styles/main.css&quot;>
+    
+    &lt;!-- javascript plugin of the slider -->
+    &lt;script src=&quot;assets/scripts/slider.js&quot; type=&quot;module&quot; defer>&lt;/script>
+&lt;/head>
+&lt;body>
+    
+&lt;/body>
+&lt;/html>
+
+</code></pre>
+<hr>
+<h3>Add link to the files</h3>
+<p>Minimal html structure</p>
+<pre class="prettyprint source lang-HTML"><code>&lt;section>
+    &lt;!-- the root element of the slider -->
+    &lt;div class=&quot;container&quot; id=&quot;slider&quot;>
+        &lt;!-- your slides here ex -->
+        &lt;div class=&quot;project columns&quot;>
+            &lt;div class=&quot;column&quot;>
+                &lt;div class=&quot;media&quot;>
+                    &lt;div class=&quot;media-content&quot;>
+                        &lt;p class=&quot;title is-4&quot;>Title &lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class=&quot;content&quot;>
+                    Lorem ipsum dolor sit amet.
+                &lt;/div>
+                &lt;div class=&quot;content&quot;>
+                    &lt;button class=&quot;button is-danger is-outlined&quot;>voir plus&lt;/button>
+                &lt;/div>
+            &lt;/div>
+        
+            &lt;div class=&quot;column&quot;>
+                &lt;figure class=&quot;image is4by3&quot;>
+                    &lt;img src=&quot;&quot; alt='Placeholder image' , height=&quot;400&quot;>
+                &lt;/figure>
+            &lt;/div>
+        &lt;/div>
+        &lt;div class=&quot;project columns&quot;>
+            ...
+        &lt;/div>
+        &lt;div class=&quot;project columns&quot;>
+            ...
+        &lt;/div>
+        &lt;div class=&quot;project columns&quot;>
+            ...
+        &lt;/div>
+    &lt;/div>
+&lt;/section>
+
+</code></pre>
+<hr>
+<h3>Init the plugin</h3>
+<p>Add script tag on html and call the class</p>
+<pre class="prettyprint source lang-HTML"><code>&lt;!DOCTYPE html>
+&lt;html lang=&quot;en&quot;>
+&lt;head>
+    ...
+&lt;/head>
+&lt;body>
+    ...
+
+    &lt;!-- call and init the class -->
+    &lt;script>
+        // wait until the dom ready
+        document.addEventListener('readystatechange', () => {
+            let options =  {
+                slidesVisible: 2,
+                slidesToScroll: 2,
+                loop: false,
+                infinite: true,
+                pagination: true
+            }
+            // init the slider with #slider as selector
+        new Slider(document.querySelector('#slider'), options)
+
+        })
+    &lt;/script>
+&lt;/body>
+&lt;/html>
+</code></pre>
+<hr>
+<h3>Plugin's options</h3>
+<p>Default options are :</p>
+<pre class="prettyprint source lang-JSON"><code>{
+      &quot;slidesToScroll&quot;: 1,
+      &quot;slidesVisible&quot;: 1,
+      &quot;loop&quot;: false,
+      &quot;pagination&quot;: false,
+      &quot;navigation&quot;: true,
+      &quot;infinite&quot;: false
+}
+</code></pre>
+<h3>Options definitions</h3>
+<dl>
+    <dt>SlidesToScroll</dt>
+    <dd>Nbr of slides to scroll.</dd>
+    <dt>SlidesVisible</dt>
+    <dd>Nbr of slides to visible.</dd>
+    <dt>Loop</dt>
+    <dd>Active looop | <b>if loop active infinit must be false</b></dd>
+    <dt>Pagination</dt>
+    <dd>Active pagination</dd>
+    <dt>Navigation</dt>
+    <dd>Active navigation</dd>    
+    <dt>Infinite</dt>
+    <dd> Active infinite loop | <b>if infinite active loop must be false</b></dd>
+</dl>
+<hr>
+<h5>Version</h5>
+<p>1.1</p>
+<h5>License</h5>
+<p>MIT</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Feb 25 2020 18:11:17 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

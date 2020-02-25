@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>touchMobile.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Slider.html">Slider</a><ul class='methods'><li data-type='method'><a href="Slider.html#createNavigation">createNavigation</a></li><li data-type='method'><a href="Slider.html#createPagination">createPagination</a></li><li data-type='method'><a href="Slider.html#disableTransition">disableTransition</a></li><li data-type='method'><a href="Slider.html#enableTransition">enableTransition</a></li><li data-type='method'><a href="Slider.html#goToItem">goToItem</a></li><li data-type='method'><a href="Slider.html#next">next</a></li><li data-type='method'><a href="Slider.html#onMove">onMove</a></li><li data-type='method'><a href="Slider.html#onWindowResize">onWindowResize</a></li><li data-type='method'><a href="Slider.html#prev">prev</a></li><li data-type='method'><a href="Slider.html#resetInfinite">resetInfinite</a></li><li data-type='method'><a href="Slider.html#setStyle">setStyle</a></li><li data-type='method'><a href="Slider.html#translate">translate</a></li></ul></li><li><a href="SliderTouchMobile.html">SliderTouchMobile</a><ul class='methods'><li data-type='method'><a href="SliderTouchMobile.html#.drag">drag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.endDrag">endDrag</a></li><li data-type='method'><a href="SliderTouchMobile.html#.startDrag">startDrag</a></li></ul></li><li><a href="SliderTouchMobile.module.exports.html">module.exports</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">touchMobile.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Ajoute la navigation tactile pour le Slider / pour mobile et drag
+ *
+ * @export
+ * @class SliderTouchMobile
+ */
+export default class SliderTouchMobile {
+  /**
+   *Creates an instance of SliderTouchMobile.
+    * @param {Slider} slider
+    * @memberof SliderTouchMobile
+    */
+  constructor (slider) {
+    this.slider = slider
+    this.width = this.slider.containerWidth
+    slider.container.addEventListener('dragstart', e => e.preventDefault())
+    slider.container.addEventListener('mousedown', this.startDrag.bind(this))
+    slider.container.addEventListener('touchstart', this.startDrag.bind(this))
+    slider.container.addEventListener('pointerdown', this.startDrag.bind(this))
+
+    window.addEventListener('mousemove', this.drag.bind(this))
+    window.addEventListener('touchmove', this.drag.bind(this))
+    window.addEventListener('pointermove', this.drag.bind(this))
+
+    window.addEventListener('mouseup', this.endDrag.bind(this))
+    window.addEventListener('touchend', this.endDrag.bind(this))
+    window.addEventListener('touchcancel', this.endDrag.bind(this))
+    window.addEventListener('pointerup', this.endDrag.bind(this))
+  }
+
+  // Methods
+  /**
+   *
+   * Démarre le déplacement au touché
+   * @param {MouseEvent|TouchEvent} e
+   * @memberof SliderTouchMobile
+   */
+  startDrag (e) {
+    if (e.touches) {
+      if (e.touches.length > 1) {
+        return
+      } else {
+        e = e.touches[0]
+      }
+    }
+    this.origin = {
+      x: e.screenX,
+      y: e.screenY
+    }
+    this.slider.disableTransition()
+  }
+
+  /**
+   *
+   *
+   * @param {MouseEvent|TouchEvent} e
+   * @memberof SliderTouchMobile
+   */
+  drag (e) {
+    if (this.origin) {
+      const point = e.touches ? e.touches[0] : e
+      const translate = { x: point.screenX - this.origin.x, y: point.screenY - this.origin.y }
+      if (e.touches &amp;&amp; Math.abs(translate.x) > Math.abs(translate.y)) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      const baseTranslate = this.slider.currentItem * -100 / this.slider.items.length
+      this.lastTranslate = translate
+      this.slider.translate(baseTranslate + (100 * translate.x / this.width))
+    }
+  }
+
+  /**
+   *
+   * Fin du déplacement
+   * @param {MouseEvent|TouchEvent} e
+   * @memberof SliderTouchMobile
+   */
+  endDrag (e) {
+    if (this.origin &amp;&amp; this.lastTranslate) {
+      this.slider.enableTransition()
+      if (Math.abs(this.lastTranslate.x / this.slider.sliderWidth) > 0.15) {
+        if (this.lastTranslate.x &lt; 0) {
+          this.slider.next()
+        } else {
+          this.slider.prev()
+        }
+      } else {
+        this.slider.goToItem(this.slider.currentItem)
+      }
+    }
+    this.origin = null
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Feb 25 2020 18:11:17 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
